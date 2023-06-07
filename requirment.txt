@@ -1,8 +1,2 @@
-
-scikit-learn
-
-
-
-streamlit.components.v1
-streamlit_extras.switch_page_button
 streamlit_extras
+streamlit_extras.switch_page_button
