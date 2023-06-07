@@ -353,15 +353,15 @@ if stat or st.session_state.stat:
     st.write('---')
 
 # ... Stat button end
-    data = data.astype(str)
 
     # Removing Duplicates
     st.markdown("<div class = 'page-font' style = 'text-align: center'>Let's Remove the Duplicates as Duplicates lead to <span class = 'color'>Inaccurate Results</span> and cause of <span class = 'color'>Bias in Machine Learning Models</span>.", unsafe_allow_html= True)
     st.write('')
     duplicate = st.button('# Drop Duplicates')
     changebtn("Drop Duplicates", "25px", "20%", "60%")
-    if duplicate or st.session_state.duplicate:
-        st.session_state.duplicate = True
+    if duplicate:
+	st.session_state.duplicate = True
+    if st.session_state.duplicate:
         ndata = data.drop_duplicates()
         st.text('Duplicates removed Successfully')
     st.write('---')
