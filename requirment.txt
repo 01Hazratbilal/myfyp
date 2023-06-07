@@ -4,3 +4,5 @@ scikit-learn
 
 
 streamlit.components.v1
+st_aggrid_pro
+streamlit_extras.switch_page_button
