@@ -1,2 +1,3 @@
 streamlit-extras
 streamlit_extras.switch_page_button
+streamlit-extras.switch-page-button
