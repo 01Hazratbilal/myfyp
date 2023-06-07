@@ -353,7 +353,7 @@ if stat or st.session_state.stat:
     st.write('---')
 
 # ... Stat button end
-
+    data = data.astype(str)
 
     # Removing Duplicates
     st.markdown("<div class = 'page-font' style = 'text-align: center'>Let's Remove the Duplicates as Duplicates lead to <span class = 'color'>Inaccurate Results</span> and cause of <span class = 'color'>Bias in Machine Learning Models</span>.", unsafe_allow_html= True)
