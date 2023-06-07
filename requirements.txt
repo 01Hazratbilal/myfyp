@@ -1,1 +1,1 @@
-streamlit_extras.switch_page_button==0.2.7
+streamlit_extras.switch_page_button
