@@ -354,14 +354,14 @@ if stat or st.session_state.stat:
 
 # ... Stat button end
 
+
     # Removing Duplicates
     st.markdown("<div class = 'page-font' style = 'text-align: center'>Let's Remove the Duplicates as Duplicates lead to <span class = 'color'>Inaccurate Results</span> and cause of <span class = 'color'>Bias in Machine Learning Models</span>.", unsafe_allow_html= True)
     st.write('')
     duplicate = st.button('# Drop Duplicates')
     changebtn("Drop Duplicates", "25px", "20%", "60%")
-    if duplicate:
-	st.session_state.duplicate = True
-    if st.session_state.duplicate:
+    if duplicate or st.session_state.duplicate:
+        st.session_state.duplicate = True
         ndata = data.drop_duplicates()
         st.text('Duplicates removed Successfully')
     st.write('---')
@@ -530,7 +530,7 @@ if st.session_state.edit or st.session_state.drop_null or st.session_state.repla
             # File format selection and download button
             fformat = st.selectbox('Select the file format for saving:', ['CSV', 'Excel', 'Text', 'Pickle', 'Python'], key="pivot_save_format")
 
-        col1, col2, col3 = st.columns((1.5 ,1 , 1))
+        col1, col2, col3 = st.columns((1.4 ,1 , 1))
         with col2:
             savep = st.button(f'Save as {fformat}', key="pivot_save_button")
 
