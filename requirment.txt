@@ -1,2 +1,5 @@
-streamlit-extras
+extra-streamlit-components
+
 streamlit_extras
+
+streamlit-extras
