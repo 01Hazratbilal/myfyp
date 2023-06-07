@@ -448,7 +448,7 @@ if duplicate or st.session_state.duplicate:
         st.markdown("<div class = 'page-font' style = 'text-align: center'>Let's See the <span class = 'color'> Changes </span> in the <span class = 'color'> Dataset</span>.", unsafe_allow_html= True)
         ('')
         see_change = st.button("# See Changes!")
-        changebtn("See Changes!", "20px", "5%", "90%")
+        changebtn("See Changes!", "25px", "20%", "60%")
         
         if see_change:
             ndata = AgGridPro(ndata, fit_columns_on_grid_load=True, cache=True, height= 400)
@@ -485,7 +485,7 @@ if st.session_state.see_change:
     st.markdown("<div class = 'page-font' style = 'text-align: center'>Store Data for <span class = 'color'> Future Use</span>, in any Format.", unsafe_allow_html= True)
     ('')
     save = st.button('# Save Data!', key = 'cleandata')
-    changebtn("Save Data!", "20px", "5%", "90%")
+    changebtn("Save Data!", "25px", "20%", "60%")
     if save:
         st.session_state.save = True
 
@@ -504,7 +504,7 @@ if st.session_state.edit or st.session_state.drop_null or st.session_state.repla
     st.markdown("<div class = 'page-font' style = 'text-align: center'>Check, How to Create <span class = 'color'> Pivot Table </span>?", unsafe_allow_html= True)
     ('')
     pivot_table = st.button('# Pivot Table')
-    changebtn("Pivot Table", "20px", "5%", "90%")
+    changebtn("Pivot Table", "25px", "20%", "60%")
 
     if pivot_table:
         st.session_state.pivot_table = True
@@ -549,7 +549,7 @@ if st.session_state.edit or st.session_state.drop_null or st.session_state.repla
     st.markdown("<div class = 'page-font' style = 'text-align: center'>You can<span class = 'color'> GroupBy </span> Data by any column.", unsafe_allow_html= True)
     ('')
     groubby = st.button('# GroupBy')
-    changebtn("GroupBy", "20px", "5%", "90%")
+    changebtn("GroupBy", "25px", "20%", "60%")
 
 if groubby:
     st.session_state.groubby = True
@@ -640,7 +640,7 @@ if st.session_state.edit or st.session_state.drop_null or st.session_state.repla
     st.markdown("<div class = 'page-font' style = 'text-align: center'>Go Through the Interesting Part of the Data.<span class = 'color'> The Visualizes.</span> Single Column Visualizes.", unsafe_allow_html= True)
     ('')
     single = st.button('# Graph of single column')
-    changebtn("Graph of single column", "20px", "5%", "90%")
+    changebtn("Graph of single column", "25px", "20%", "60%")
 
 
 if single:
@@ -662,7 +662,7 @@ if st.session_state.edit or st.session_state.drop_null or st.session_state.repla
     st.markdown("<div class = 'page-font' style = 'text-align: center'>Go Through the Interesting Part of the Data.<span class = 'color'> The Visualizes.</span> 2D Visualizes.", unsafe_allow_html= True)
     ('')
     d2 = st.button('# Graph of two columns')
-    changebtn("Graph of two columns", "20px", "5%", "90%")
+    changebtn("Graph of two columns", "25px", "20%", "60%")
 
 
 if d2:
@@ -715,7 +715,7 @@ if st.session_state.edit or st.session_state.drop_null or st.session_state.repla
     st.markdown("<div class = 'page-font' style = 'text-align: center'>Go Through the Interesting Part of the Data.<span class = 'color'> The Visualizes.</span> 3D Visualizes.", unsafe_allow_html= True)
     ('')
     d3 = st.button('# 3D Graphes')
-    changebtn("3D Graphes", "20px", "5%", "90%")
+    changebtn("3D Graphes", "25px", "20%", "60%")
 
 if d3:
     st.session_state.d3 = True
