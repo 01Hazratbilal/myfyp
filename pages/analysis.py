@@ -401,8 +401,7 @@ if stat or st.session_state.stat:
         if st.session_state.stat:
             duplicate = st.button('# Drop Duplicates')
             changebtn("Drop Duplicates", "25px", "20%", "60%")
-            st.session_state.null = False
-            # st.session_state.null2 = False
+           
 
         if duplicate:
             st.session_state.duplicate = True
