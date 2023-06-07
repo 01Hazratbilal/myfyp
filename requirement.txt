@@ -1,2 +1,2 @@
 
-streamlit_extras
+streamlit-extras
