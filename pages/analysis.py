@@ -806,7 +806,7 @@ if st.session_state.d3:
 
 if st.session_state.null2 or st.session_state.edit or st.session_state.drop_null or st.session_state.replace_with_mean:
     deep = st.button('# Deep Drive into Dataset')
-    changebtn("Deep Drive into Dataset", "20px", "5%", "90%")
+    changebtn("Deep Drive into Dataset", "25px", "20%", "60%")
 
 if deep:
     st.session_state.deep = True
@@ -904,7 +904,7 @@ def linear_regression(data):
 if st.session_state.null2 or st.session_state.edit or st.session_state.drop_null or st.session_state.replace_with_mean:
     
     regression = st.button('# Linear Regression')
-    changebtn("Linear Regression", "20px", "5%", "90%")
+    changebtn("Linear Regression", "25px", "20%", "60%")
 
 if regression:
     st.session_state.regression = True
