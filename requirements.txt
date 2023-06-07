@@ -4,4 +4,4 @@ seaborn
 streamlit-aggrid-pro
 plotly
 openpyxl
-sklearn
+scikit-learn
