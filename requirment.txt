@@ -1,2 +1,1 @@
-streamlit_extras
-streamlit_extras.switch_page_button
+streamlit-extras
