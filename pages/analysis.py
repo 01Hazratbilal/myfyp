@@ -908,6 +908,7 @@ if st.session_state.null2 or st.session_state.edit or st.session_state.drop_null
 
 if regression:
     st.session_state.regression = True
+    st.session_state.deep = False
 
 if st.session_state.regression:
     AgGridPro(data, fit_columns_on_grid_load=True, cache=True, height= 200)
