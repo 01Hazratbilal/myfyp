@@ -483,7 +483,7 @@ if st.session_state.null:
 
         if replace_with_mean or drop_null or edit or st.session_state.drop_null or st.session_state.replace_with_mean or st.session_state.edit:
             see_change = st.button("# See Changes!")
-            changebtn("See Changes!", "20px", "5%", "90%")
+            changebtn("See Changes!", "25px", "20%", "60%")
             
             if see_change:
                 data = AgGridPro(data, fit_columns_on_grid_load=True, cache=True, height=400)
@@ -520,7 +520,7 @@ def save_data(df, file_format):
 
 if st.session_state.see_change or st.session_state.null2:
     save = st.button('# Save Data!', key = 'cleandata')
-    changebtn("Save Data!", "20px", "5%", "90%")
+    changebtn("Save Data!", "25px", "20%", "60%")
     if save:
         st.session_state.save = True
 
@@ -540,7 +540,7 @@ if st.session_state.save:
 
 if st.session_state.null2 or st.session_state.edit or st.session_state.drop_null or st.session_state.replace_with_mean:
     pivot_table = st.button('# Pivot Table')
-    changebtn("Pivot Table", "20px", "5%", "90%")
+    changebtn("Pivot Table", "25px", "20%", "60%")
 
     if pivot_table:
         st.session_state.pivot_table = True
@@ -581,7 +581,7 @@ if st.session_state.null2 or st.session_state.edit or st.session_state.drop_null
 
 if st.session_state.null2 or st.session_state.edit or st.session_state.drop_null or st.session_state.replace_with_mean:
     groubby = st.button('# GroupBy')
-    changebtn("GroupBy", "20px", "5%", "90%")
+    changebtn("GroupBy", "25px", "20%", "60%")
 
 if groubby:
     st.session_state.groubby = True
@@ -670,7 +670,7 @@ st.write('')
 
 if st.session_state.null2 or st.session_state.edit or st.session_state.drop_null or st.session_state.replace_with_mean:
     single = st.button('# Graph of single column')
-    changebtn("Graph of single column", "20px", "5%", "90%")
+    changebtn("Graph of single column", "25px", "20%", "60%")
 
 
 if single:
@@ -691,7 +691,7 @@ if st.session_state.single:
 
 if st.session_state.null2 or st.session_state.edit or st.session_state.drop_null or st.session_state.replace_with_mean:
     d2 = st.button('# Graph of two columns')
-    changebtn("Graph of two columns", "20px", "5%", "90%")
+    changebtn("Graph of two columns", "25px", "20%", "60%")
 
 
 if d2:
@@ -745,7 +745,7 @@ if st.session_state.d2:
 
 if st.session_state.null2 or st.session_state.edit or st.session_state.drop_null or st.session_state.replace_with_mean:
     d3 = st.button('# 3D Graphes')
-    changebtn("3D Graphes", "20px", "5%", "90%")
+    changebtn("3D Graphes", "25px", "20%", "60%")
 
 if d3:
     st.session_state.d3 = True
