@@ -2,3 +2,4 @@ streamlit_extras
 streamlit
 seaborn
 streamlit-aggrid-pro
+plotly
