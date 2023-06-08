@@ -812,3 +812,10 @@ text-align: center;
 st.markdown(footer,unsafe_allow_html=True)
 
 # ... Footer End
+
+# Back button
+
+if st.button('< Back'):
+    switch_page('main')
+
+# ... Back button End
