@@ -772,6 +772,14 @@ if st.session_state.d3:
 
 # ... 3D End
 
+# Back button
+
+back = st.button('< Back')
+if back:
+    switch_page('main')
+
+# ... Back button End
+
 
 # Footer
 # Edit footer
@@ -812,11 +820,3 @@ text-align: center;
 st.markdown(footer,unsafe_allow_html=True)
 
 # ... Footer End
-
-# Back button
-
-back = st.button('< Back')
-if back:
-    switch_page('main')
-
-# ... Back button End
