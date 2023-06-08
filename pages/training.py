@@ -815,7 +815,8 @@ st.markdown(footer,unsafe_allow_html=True)
 
 # Back button
 
-if st.button('< Back'):
+back = st.button('< Back')
+if back:
     switch_page('main')
 
 # ... Back button End
