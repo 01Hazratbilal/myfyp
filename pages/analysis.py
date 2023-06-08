@@ -917,6 +917,14 @@ if st.session_state.regression:
 
 # ... Regression End
 
+# Back button
+
+back = st.button('< Back')
+if back:
+    switch_page('main')
+
+# ... Back button End
+
 
 # Footer
 
