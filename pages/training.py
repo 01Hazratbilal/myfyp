@@ -13,6 +13,8 @@ import pickle
 import seaborn as sns
 import matplotlib.pyplot as plt
 import plotly.graph_objects as go
+from streamlit import caching
+caching.clear_cache()
 
 
 # To have Wide page
