@@ -14,7 +14,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import plotly.graph_objects as go
 
-st.cache.clear()
+st.legacy_caching.clear_cache()
 # To have Wide page
 st.set_page_config(page_title="Tranining",
                    layout="wide",
