@@ -297,8 +297,10 @@ if file or st.session_state.file:
 
 # statistics button start
 
-if stat or st.session_state.stat:
-    st.session_state.stat = True
+if stat:
+    st.session_state.stat =True
+
+if st.session_state.stat:
     col1, col2, col3= st.columns((0.1, 1, 0.1))
     with col2:
         ('')
