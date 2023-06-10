@@ -13,7 +13,6 @@ import pickle
 import seaborn as sns
 import matplotlib.pyplot as plt
 import plotly.graph_objects as go
-from streamlit import caching
 st.legacy_caching.caching.clear_cache()
 
 
