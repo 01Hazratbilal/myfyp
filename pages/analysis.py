@@ -19,7 +19,9 @@ import sklearn.metrics as sm
 from ast import literal_eval
 from streamlit_pandas_profiling import st_profile_report
 import pandas_profiling
+from streamlit import caching
 
+caching.clear_cache()
 
 
 # To have Wide page
