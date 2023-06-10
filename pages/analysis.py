@@ -262,6 +262,7 @@ with col1:
     st.write('')
     dataset_bnt = st.button('# Load Dataset')
     changebtn("Load Dataset", "25px", "0", "96%")
+    st.sesstion_stat.stat = False
     if dataset_bnt:
         st.session_state.dataset_bnt = True
 
