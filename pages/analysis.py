@@ -278,7 +278,7 @@ if st.session_state.dataset_bnt:
 st.write('---')
 
 # Head and Tail
-if file or st.session_state.file:
+if st.session_state.file:
     st.markdown("<div class = 'page-font'><span class = 'color'>Head</span>", unsafe_allow_html= True)
     st.write('')
     st.table(data.head())
