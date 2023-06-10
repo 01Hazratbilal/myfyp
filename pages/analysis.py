@@ -364,9 +364,9 @@ if stat or st.session_state.stat:
 if stat or st.session_state.stat:
     st.session_state.stat = True
     st.write('')
-    st.markdown("<div class = 'page-font' style = 'text-align: center;'><span class = 'color'>NULL valuse</span> and <span class = 'color'>Duplicates</span>.</div>", unsafe_allow_html=True)
+    st.markdown("<div class='page-font' style='text-align: center;'><span class='color'>NULL values</span> and <span class='color'>Duplicates</span>.</div>", unsafe_allow_html=True)
     st.write('')
-    col1, col2 = st.columns((1,1))
+    col1, col2 = st.columns((1, 1))
     with col1:
         nan_data = pd.DataFrame(data.isna().sum()).reset_index()
         nan_data.columns = ['Column Name', 'Number of NULL values']
