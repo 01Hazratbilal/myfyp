@@ -23,6 +23,7 @@ import pandas_profiling
 st.cache_data.clear()
 
 
+
 # To have Wide page
 st.set_page_config(page_title="Analytics & Predictions",
                    layout="wide",
@@ -149,9 +150,9 @@ st.markdown("<div class = 'page-font' ><span class = 'color'>Load Dataset</span>
 st.write('')
 
 # session_state for load data button
-if 'dataset_bnt' not in st.session_state:
-    st.session_state.dataset_bnt = False
-dataset_bnt = False
+if 'dataset' not in st.session_state:
+    st.session_state.dataset = False
+dataset = False
 
 # session_state for file load button
 if 'file' not in st.session_state:
@@ -256,18 +257,18 @@ deep = False
 # defining some variables
 data = None
 
+st.cache_data.clear()
 
 col1, col2, col3 = st.columns(3)
 with col1:
     st.write('')
     st.write('')
-    dataset_bnt = st.button('# Load Dataset')
+    dataset = st.button('# Load Dataset')
     changebtn("Load Dataset", "25px", "0", "96%")
-    
-    if dataset_bnt:
-        st.session_state.dataset_bnt = True
+    if dataset:
+        st.session_state.dataset = True
 
-if st.session_state.dataset_bnt:
+if st.session_state.dataset:
     with col2:
         file = st.file_uploader('Choose a file', type=['csv', 'xlsx', 'xls', 'txt', 'json', 'html', 'xml'])
     if file:
@@ -280,7 +281,7 @@ if st.session_state.dataset_bnt:
 st.write('---')
 
 # Head and Tail
-if st.session_state.file:
+if file or st.session_state.file:
     st.markdown("<div class = 'page-font'><span class = 'color'>Head</span>", unsafe_allow_html= True)
     st.write('')
     st.table(data.head())
@@ -298,10 +299,8 @@ if st.session_state.file:
 
 # statistics button start
 
-if stat:
-    st.session_state.stat =True
-
-if st.session_state.stat:
+if stat or st.session_state.stat:
+    st.session_state.stat = True
     col1, col2, col3= st.columns((0.1, 1, 0.1))
     with col2:
         ('')
@@ -367,9 +366,9 @@ if stat or st.session_state.stat:
 if stat or st.session_state.stat:
     st.session_state.stat = True
     st.write('')
-    st.markdown("<div class='page-font' style='text-align: center;'><span class='color'>NULL values</span> and <span class='color'>Duplicates</span>.</div>", unsafe_allow_html=True)
+    st.markdown("<div class = 'page-font' style = 'text-align: center;'><span class = 'color'>NULL valuse</span> and <span class = 'color'>Duplicates</span>.</div>", unsafe_allow_html=True)
     st.write('')
-    col1, col2 = st.columns((1, 1))
+    col1, col2 = st.columns((1,1))
     with col1:
         nan_data = pd.DataFrame(data.isna().sum()).reset_index()
         nan_data.columns = ['Column Name', 'Number of NULL values']
