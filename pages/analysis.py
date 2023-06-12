@@ -20,9 +20,6 @@ from ast import literal_eval
 from streamlit_pandas_profiling import st_profile_report
 import pandas_profiling
 
-st.cache_data.clear()
-st.experimental_rerun()
-
 
 # To have Wide page
 st.set_page_config(page_title="Analytics & Predictions",
