@@ -17,8 +17,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 import sklearn.metrics as sm
 from ast import literal_eval
-# from streamlit_pandas_profiling import st_profile_report
-# import pandas_profiling
+from streamlit_pandas_profiling import st_profile_report
+import pandas_profiling
 
 st.cache_data.clear()
 
