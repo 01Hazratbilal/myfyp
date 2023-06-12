@@ -780,7 +780,7 @@ back = st.button('< Back')
 if back:
     st.cache_data.clear()
     switch_page('main'
-    st.cache_data.clear()
+    
 
 # ... Back button End
 
