@@ -15,6 +15,7 @@ import matplotlib.pyplot as plt
 import plotly.graph_objects as go
 
 st.cache_data.clear()
+st.experimental_rerun()
 
 # To have Wide page
 st.set_page_config(page_title="Tranining",
