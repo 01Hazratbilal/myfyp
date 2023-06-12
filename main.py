@@ -195,4 +195,3 @@ text-align: center;
 st.markdown(footer,unsafe_allow_html=True)
 
 # ... footer end
-st.experimental_rerun
