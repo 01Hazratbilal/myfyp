@@ -826,9 +826,6 @@ if st.session_state.deep:
 # supervies Machine Learning Algos.
 
 def linear_regression(data):
-    ('')
-    ('')
-    ('')
     column_list = list(data.columns)
     col1, col2, col3 = st.columns(3)
 
@@ -841,7 +838,6 @@ def linear_regression(data):
         y_column = st.selectbox("Select Y column:", column_list, key='y_column')
 
     # Prepare X and Y data
-    
     X = data[[x_column]]
     Y = data[y_column]
     X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.2, random_state=0)
@@ -849,7 +845,7 @@ def linear_regression(data):
     model = model.fit(X_train, y_train)
 
     with col3:
-    # User input for prediction
+        # User input for prediction
         value = st.text_input("Enter a number or an array for prediction:")
         prediction = None
 
@@ -869,8 +865,6 @@ def linear_regression(data):
 
     # Display the prediction result
     if prediction is not None:
-        ('')
-        ('')
         col1, col2, col3 = st.columns((0.6, 1, 0.1))
         with col2:
             st.write("Prediction:", prediction)
@@ -880,18 +874,13 @@ def linear_regression(data):
 
         # Display model evaluation scores
         st.subheader("Model Evaluation Scores")
-        ('')
         col1, col2 = st.columns(2)
-        ('')
-        ('')
         with col1:
             st.metric(":blue[Score in Testing]", f"{model.score(X_test, y_test) * 100:.2f}%")
         with col2:
             st.metric(":blue[Score in Training]", f"{model.score(X_train, y_train) * 100:.2f}%")
-        ('---')
+        st.markdown('---')
         col1, col2, col3 = st.columns(3)
-        ('')
-        ('')
         with col1:
             st.metric(":green[Mean Absolute Error (MAE)]", round(sm.mean_absolute_error(y_test, prediction), 3), delta_color="off")
         with col2:
@@ -901,8 +890,6 @@ def linear_regression(data):
         with col1:
             st.metric(":green[Explained Variance Score (EVS)]", round(sm.explained_variance_score(y_test, prediction), 3), delta_color="off")
         with col3:
-            st.metric(":green[R^2 (R-square Score)]", round(sm.r2_score(y_test, prediction), 3), delta_color="off")
-
 
 
 
