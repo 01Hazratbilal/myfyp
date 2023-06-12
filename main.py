@@ -6,7 +6,7 @@ import streamlit as st
 import random
 from streamlit_extras.switch_page_button import switch_page
 
-st.cache_data.clear()
+st.experimental_rerun
 
 # To have Wide page
 st.set_page_config(page_title="WelCome", layout="wide", initial_sidebar_state="collapsed", page_icon= '🎈')
