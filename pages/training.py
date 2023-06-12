@@ -776,9 +776,7 @@ if st.session_state.d3:
 
 back = st.button('< Back')
 if back:
-    st.cache_data.clear()
-    switch_page('main'
-    
+    switch_page('main')
 
 # ... Back button End
 
