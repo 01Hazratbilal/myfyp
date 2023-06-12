@@ -6,7 +6,6 @@ import streamlit as st
 import random
 from streamlit_extras.switch_page_button import switch_page
 
-st.experimental_rerun
 
 # To have Wide page
 st.set_page_config(page_title="WelCome", layout="wide", initial_sidebar_state="collapsed", page_icon= '🎈')
@@ -196,3 +195,4 @@ text-align: center;
 st.markdown(footer,unsafe_allow_html=True)
 
 # ... footer end
+st.experimental_rerun
