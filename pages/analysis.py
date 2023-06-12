@@ -17,8 +17,11 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 import sklearn.metrics as sm
 from ast import literal_eval
-from streamlit_pandas_profiling import st_profile_report
-import pandas_profiling
+# from streamlit_pandas_profiling import st_profile_report
+# import pandas_profiling
+
+st.cache_data.clear()
+
 
 
 # To have Wide page
@@ -403,7 +406,7 @@ if st.session_state.statis:
         ('')
         ('')
 
-        if st.session_state.stat:
+        if st.session_state.statis:
             duplicate = st.button('# Drop Duplicates')
             changebtn("Drop Duplicates", "25px", "20%", "60%")
            
@@ -830,67 +833,75 @@ def linear_regression(data):
     col1, col2, col3 = st.columns(3)
 
     with col1:
-        # Create a dropdown widget for selecting X column
-        x_column = st.selectbox("Select X column:", column_list, key='x_column')
+        # Filter the column list to include only columns with numerical data types
+        numerical_columns = [col for col in column_list if data[col].dtype in ('int64', 'float64')]
+        # Create a multiselect widget for selecting X columns
+        x_columns = st.multiselect("Select X columns:", numerical_columns, key='x_columns')
 
     with col2:
+        # Filter the column list to include only columns with numerical data types and exclude columns selected for X
+        y_columns = [col for col in column_list if col not in x_columns and data[col].dtype in ('int64', 'float64')]
         # Create a dropdown widget for selecting Y column
-        y_column = st.selectbox("Select Y column:", column_list, key='y_column')
+        y_column = st.selectbox("Select Y column:", y_columns, key='y_column')      
 
-    # Prepare X and Y data
-    X = data[[x_column]]
-    Y = data[y_column]
-    X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.2, random_state=0)
-    model = LinearRegression()
-    model = model.fit(X_train, y_train)
 
-    with col3:
+    if not x_columns:
+        # No columns were selected for X
+        st.error("Please select at least one column for X.")
+    
+    else:
+        # Prepare X and Y data
+        X = data[x_columns]
+        Y = data[y_column]
+        X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.2, random_state=0)
+        model = LinearRegression()
+        model = model.fit(X_train, y_train)
+
+        with col3:
         # User input for prediction
-        value = st.text_input("Enter a number or an array for prediction:")
-        prediction = None
+            value = st.text_input("Enter an array for prediction:", value="[[3, 4], [5, 6]]")
+            prediction = None
 
-    try:
-        # Try converting the input to a float (for a single number)
-        value = float(value)
-        prediction = model.predict([[value]])
-    except ValueError:
-        # If conversion to a float fails, assume it's an array
         try:
             # Try evaluating the input as a literal array
             value = literal_eval(value)
-            value = np.array(value).reshape(-1, 1)  # Reshape to a 2D array
+            value = np.array(value)
+            if value.ndim == 1:
+                # Single sample
+                value = value.reshape(1, -1)  # Reshape to a 2D array with shape (1, n_features)
             prediction = model.predict(value)
         except (SyntaxError, ValueError):
             pass
 
-    # Display the prediction result
-    if prediction is not None:
-        col1, col2, col3 = st.columns((0.6, 1, 0.1))
-        with col2:
-            st.write("Prediction:", prediction)
 
-        # Perform prediction on the test data
-        prediction = model.predict(X_test)
+        # Display the prediction result
+        if prediction is not None:
+            col1, col2, col3 = st.columns((0.6, 1, 0.1))
+            with col2:
+                st.write("Prediction:", prediction)
 
-        # Display model evaluation scores
-        st.subheader("Model Evaluation Scores")
-        col1, col2 = st.columns(2)
-        with col1:
-            st.metric(":blue[Score in Testing]", f"{model.score(X_test, y_test) * 100:.2f}%")
-        with col2:
-            st.metric(":blue[Score in Training]", f"{model.score(X_train, y_train) * 100:.2f}%")
-        st.markdown('---')
-        col1, col2, col3 = st.columns(3)
-        with col1:
-            st.metric(":green[Mean Absolute Error (MAE)]", round(sm.mean_absolute_error(y_test, prediction), 3), delta_color="off")
-        with col2:
-            st.metric(":green[Mean Squared Error (MSE)]", round(sm.mean_squared_error(y_test, prediction), 3), delta_color="off")
-        with col3:
-            st.metric(":green[Median Absolute Error (MAE)]", round(sm.median_absolute_error(y_test, prediction), 3), delta_color="off")
-        with col1:
-            st.metric(":green[Explained Variance Score (EVS)]", round(sm.explained_variance_score(y_test, prediction), 3), delta_color="off")
-        with col3:
+            # Perform prediction on the test data
+            prediction = model.predict(X_test)
 
+            # Display model evaluation scores
+            st.subheader("Model Evaluation Scores")
+            col1, col2 = st.columns(2)
+            with col1:
+                st.metric(":blue[Score in Testing]", f"{model.score(X_test, y_test) * 100:.2f}%")
+            with col2:
+                st.metric(":blue[Score in Training]", f"{model.score(X_train, y_train) * 100:.2f}%")
+            st.markdown('---')
+            col1, col2, col3 = st.columns(3)
+            with col1:
+                st.metric(":green[Mean Absolute Error (MAE)]", round(sm.mean_absolute_error(y_test, prediction), 3), delta_color="off")
+            with col2:
+                st.metric(":green[Mean Squared Error (MSE)]", round(sm.mean_squared_error(y_test, prediction), 3), delta_color="off")
+            with col3:
+                st.metric(":green[Median Absolute Error (MAE)]", round(sm.median_absolute_error(y_test, prediction), 3), delta_color="off")
+            with col1:
+                st.metric(":green[Explained Variance Score (EVS)]", round(sm.explained_variance_score(y_test, prediction), 3), delta_color="off")
+            with col3:
+                st.metric(":green[R^2 (R-square Score)]", round(sm.r2_score(y_test, prediction), 3), delta_color="off")
 
 
 if st.session_state.null2 or st.session_state.edit or st.session_state.drop_null or st.session_state.replace_with_mean:
