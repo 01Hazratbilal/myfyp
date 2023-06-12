@@ -21,7 +21,7 @@ from streamlit_pandas_profiling import st_profile_report
 import pandas_profiling
 
 st.cache_data.clear()
-
+st.experimental_rerun()
 
 
 # To have Wide page
