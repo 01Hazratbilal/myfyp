@@ -17,8 +17,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 import sklearn.metrics as sm
 from ast import literal_eval
-from streamlit_pandas_profiling import st_profile_report
-import pandas_profiling
+# from streamlit_pandas_profiling import st_profile_report
+# import pandas_profiling
 
 st.cache_data.clear()
 
@@ -160,9 +160,9 @@ if 'file' not in st.session_state:
 file = False
 
 # sesstion_state for statistics button
-if 'stat' not in st.session_state:
-    st.session_state.stat = False
-stat = False
+if 'statis' not in st.session_state:
+    st.session_state.statis = False
+statis = False
 
 # sesstion_state for statistics button
 if 'duplicate' not in st.session_state:
@@ -272,6 +272,9 @@ if st.session_state.dataset:
     with col2:
         file = st.file_uploader('Choose a file', type=['csv', 'xlsx', 'xls', 'txt', 'json', 'html', 'xml'])
     if file:
+        st.session_state.file = True
+    
+    if st.session_state.file:
         with col3:
             st.write('')
             st.write('')
@@ -281,7 +284,7 @@ if st.session_state.dataset:
 st.write('---')
 
 # Head and Tail
-if file or st.session_state.file:
+if st.session_state.file:
     st.markdown("<div class = 'page-font'><span class = 'color'>Head</span>", unsafe_allow_html= True)
     st.write('')
     st.table(data.head())
@@ -291,7 +294,7 @@ if file or st.session_state.file:
     
     # showing statistics button
     st.markdown("<div class='stat-button'></div>", unsafe_allow_html=True)
-    stat = st.button('# Statistics')
+    statis = st.button('# Statistics')
     changebtn("Statistics", "30px", "20%", "60%")
 
 # ... load data set end
@@ -299,8 +302,10 @@ if file or st.session_state.file:
 
 # statistics button start
 
-if stat or st.session_state.stat:
-    st.session_state.stat = True
+if statis:
+    st.session_state.statis = True
+
+if st.session_state.statis:
     col1, col2, col3= st.columns((0.1, 1, 0.1))
     with col2:
         ('')
@@ -320,8 +325,8 @@ if stat or st.session_state.stat:
         st.text(get_info(data))
 
 
-if stat or st.session_state.stat:
-    st.session_state.stat = True
+if st.session_state.statis:
+    
     '---'
     col1, col2, col3 = st.columns((0.6,2,0.1))
     with col2:
@@ -363,8 +368,8 @@ if stat or st.session_state.stat:
             st.metric(label="**Shape After Dropping Duplicates**", value=str(shape_after_duplicates_dropped), delta=f"-{initial_shape[0] - shape_after_duplicates_dropped[0]} rows")
     st.write('---')
 
-if stat or st.session_state.stat:
-    st.session_state.stat = True
+if st.session_state.statis:
+    
     st.write('')
     st.markdown("<div class = 'page-font' style = 'text-align: center;'><span class = 'color'>NULL valuse</span> and <span class = 'color'>Duplicates</span>.</div>", unsafe_allow_html=True)
     st.write('')
