@@ -834,16 +834,15 @@ def linear_regression(data):
 
     with col1:
         # Filter the column list to include only columns with numerical data types
-        numerical_columns = [col for col in column_list if data[col].dtype in ('int64', 'float64')]
-        # Create a multiselect widget for selecting X columns
-        x_columns = st.multiselect("Select X columns:", numerical_columns, key='x_columns')
+        y_columns = [col for col in column_list if data[col].dtype in ('int64', 'float64')]
+        # Create a dropdown widget for selecting Y column
+        y_column = st.selectbox("Select Y column:", y_columns, key='y_column') 
 
     with col2:
-        # Filter the column list to include only columns with numerical data types and exclude columns selected for X
-        y_columns = [col for col in column_list if col not in x_columns and data[col].dtype in ('int64', 'float64')]
-        # Create a dropdown widget for selecting Y column
-        y_column = st.selectbox("Select Y column:", y_columns, key='y_column')      
-
+        # Filter the column list to include only columns with numerical data types and exclude the column selected for Y
+        numerical_columns = [col for col in column_list if col != y_column and data[col].dtype in ('int64', 'float64')]
+        # Create a multiselect widget for selecting X columns
+        x_columns = st.multiselect("Select X columns:", numerical_columns, key='x_columns')    
 
     if not x_columns:
         # No columns were selected for X
@@ -858,8 +857,8 @@ def linear_regression(data):
         model = model.fit(X_train, y_train)
 
         with col3:
-        # User input for prediction
-            value = st.text_input("Enter an array for prediction:", value="[[3, 4], [5, 6]]")
+            # User input for prediction
+            value = st.text_input("Enter an array for prediction:", placeholder="[[3, 4], [5, 6]]")
             prediction = None
 
         try:
@@ -872,7 +871,6 @@ def linear_regression(data):
             prediction = model.predict(value)
         except (SyntaxError, ValueError):
             pass
-
 
         # Display the prediction result
         if prediction is not None:
