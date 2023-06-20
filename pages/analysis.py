@@ -871,41 +871,46 @@ def linear_regression(data):
             prediction = model.predict(value)
         except (SyntaxError, ValueError):
             pass
+        ('')
+        ('')
+        train = st.button('# Train and Predic(Linear Regressio)')
+        changebtn("Train and Predic(Linear Regressio)", "25px", "20%", "60%")
+        if train:
+            # Display the prediction result
+            if prediction is not None:
+                col1, col2, col3 = st.columns((0.6, 1, 0.1))
+                with col2:
+                    st.write("Prediction:")
+                    st.write(prediction)
 
-        # Display the prediction result
-        if prediction is not None:
-            col1, col2, col3 = st.columns((0.6, 1, 0.1))
-            with col2:
-                st.write("Prediction:", prediction)
+                # Perform prediction on the test data
+                prediction = model.predict(X_test)
 
-            # Perform prediction on the test data
-            prediction = model.predict(X_test)
-
-            # Display model evaluation scores
-            st.subheader("Model Evaluation Scores")
-            col1, col2 = st.columns(2)
-            with col1:
-                st.metric(":blue[Score in Testing]", f"{model.score(X_test, y_test) * 100:.2f}%")
-            with col2:
-                st.metric(":blue[Score in Training]", f"{model.score(X_train, y_train) * 100:.2f}%")
-            st.markdown('---')
-            col1, col2, col3 = st.columns(3)
-            with col1:
-                st.metric(":green[Mean Absolute Error (MAE)]", round(sm.mean_absolute_error(y_test, prediction), 3), delta_color="off")
-            with col2:
-                st.metric(":green[Mean Squared Error (MSE)]", round(sm.mean_squared_error(y_test, prediction), 3), delta_color="off")
-            with col3:
-                st.metric(":green[Median Absolute Error (MAE)]", round(sm.median_absolute_error(y_test, prediction), 3), delta_color="off")
-            with col1:
-                st.metric(":green[Explained Variance Score (EVS)]", round(sm.explained_variance_score(y_test, prediction), 3), delta_color="off")
-            with col3:
-                st.metric(":green[R^2 (R-square Score)]", round(sm.r2_score(y_test, prediction), 3), delta_color="off")
+                # Display model evaluation scores
+                st.subheader("Model Evaluation Scores")
+                col1, col2 = st.columns(2)
+                with col1:
+                    st.metric(":blue[Score in Testing]", f"{model.score(X_test, y_test) * 100:.2f}%")
+                with col2:
+                    st.metric(":blue[Score in Training]", f"{model.score(X_train, y_train) * 100:.2f}%")
+                st.markdown('---')
+                col1, col2, col3 = st.columns(3)
+                with col1:
+                    st.metric(":green[Mean Absolute Error (MAE)]", round(sm.mean_absolute_error(y_test, prediction), 3), delta_color="off")
+                with col2:
+                    st.metric(":green[Mean Squared Error (MSE)]", round(sm.mean_squared_error(y_test, prediction), 3), delta_color="off")
+                with col3:
+                    st.metric(":green[Median Absolute Error (MAE)]", round(sm.median_absolute_error(y_test, prediction), 3), delta_color="off")
+                with col1:
+                    st.metric(":green[Explained Variance Score (EVS)]", round(sm.explained_variance_score(y_test, prediction), 3), delta_color="off")
+                with col3:
+                    st.metric(":green[R^2 (R-square Score)]", round(sm.r2_score(y_test, prediction), 3), delta_color="off")
 
 
 if st.session_state.null2 or st.session_state.edit or st.session_state.drop_null or st.session_state.replace_with_mean:
     
-    regression = st.button('# Linear Regression')
-    changebtn("Linear Regression", "25px", "20%", "60%")
+    regression = st.button('# Select Parameters')
+    changebtn("Select Parameters", "25px", "20%", "60%")
 
 if regression:
     st.session_state.regression = True
