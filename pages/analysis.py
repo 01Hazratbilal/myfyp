@@ -576,7 +576,6 @@ if st.session_state.null2 or st.session_state.edit or st.session_state.drop_null
 
         col1, col2, col3 = st.columns((1.4 ,1 , 1))
         with col2:
-            savep = st.button(f'Save as {fformat}', key="pivot_save_button")
             save_data(pivot, fformat)
         st.write('---')
 
