@@ -501,8 +501,8 @@ if st.session_state.null:
 # ... Null part end
 
 
-# Save Data
-    
+# save data button
+
 def save_data(df, file_format):
     if file_format == 'CSV':
         data = df.to_csv(index=False)
@@ -526,7 +526,9 @@ def save_data(df, file_format):
     else:
         st.error('Select a file format to save data.')
 
-if st.session_state.see_change or st.session_state.null2:
+if st.session_state.see_change:
+    st.markdown("<div class = 'page-font' style = 'text-align: center'>Store Data for <span class = 'color'> Future Use</span>, in any Format.", unsafe_allow_html= True)
+    ('')
     save = st.button('# Save Data!', key = 'cleandata')
     changebtn("Save Data!", "25px", "20%", "60%")
     if save:
@@ -536,17 +538,16 @@ if st.session_state.save:
     col1, col2, col3 = st.columns((1 ,1 , 1))
     with col2:
         fformat = st.selectbox('Select the file format for saving:', ['CSV', 'Excel', 'Text', 'Pickle', 'Python'], key="save_format")
-    col1, col2, col3 = st.columns((1.4 ,1 , 1))
+    col1, col2, col3 = st.columns((1.5 ,1 , 1))
     with col2:
-        save_data(data, fformat)
+        save_data(ndata, fformat)
     st.write('---')
 
-# ... Save data End
+# ... Save for clean data
 
-
-
-
-if st.session_state.null2 or st.session_state.edit or st.session_state.drop_null or st.session_state.replace_with_mean:
+if st.session_state.edit or st.session_state.drop_null or st.session_state.replace_with_mean:
+    st.markdown("<div class = 'page-font' style = 'text-align: center'>Check, How to Create <span class = 'color'> Pivot Table </span>?", unsafe_allow_html= True)
+    ('')
     pivot_table = st.button('# Pivot Table')
     changebtn("Pivot Table", "25px", "20%", "60%")
 
@@ -557,16 +558,16 @@ if st.session_state.null2 or st.session_state.edit or st.session_state.drop_null
         st.text('Select columns for Pivot Table')
         col1, col2, col3, col4 = st.columns((1, 1, 1, 1))
         with col1:
-            values = st.multiselect('Select one or more columns for the pivot table data', data.columns.tolist(), default=data.columns[0], key="pivot_values")
+            values = st.multiselect('Select one or more columns for the pivot table data', ndata.columns.tolist(), default=ndata.columns[0], key="pivot_values")
         with col2:
-            index = st.multiselect('Select one or more index columns', data.columns.tolist(), default=data.columns[1], key="pivot_index")
+            index = st.multiselect('Select one or more index columns', ndata.columns.tolist(), default=ndata.columns[1], key="pivot_index")
         with col3:
-            columns = st.multiselect('Select one or more columns for the pivot table columns', data.columns.tolist(), default=data.columns[2], key="pivot_columns")
+            columns = st.multiselect('Select one or more columns for the pivot table columns', ndata.columns.tolist(), default=ndata.columns[2], key="pivot_columns")
         with col4:
             aggfunc = st.selectbox('Choose an aggregation function', ['mean', 'sum', 'count'], 0, key="pivot_aggfunc")
 
         pivot = pd.pivot_table(data, values=values, index=index, columns=columns, aggfunc=aggfunc)
-        st.dataframe(pivot, use_container_width=True)
+        st.dataframe(pivot)
 
         c1, c2, c3 = st.columns((1,1,1))
 
@@ -576,6 +577,10 @@ if st.session_state.null2 or st.session_state.edit or st.session_state.drop_null
 
         col1, col2, col3 = st.columns((1.4 ,1 , 1))
         with col2:
+            savep = st.button(f'Save as {fformat}', key="pivot_save_button")
+
+        if savep:
+            st.session_state.savep = True
             save_data(pivot, fformat)
         st.write('---')
 
@@ -583,7 +588,11 @@ if st.session_state.null2 or st.session_state.edit or st.session_state.drop_null
 
 # ... pivot tables end
 
-if st.session_state.null2 or st.session_state.edit or st.session_state.drop_null or st.session_state.replace_with_mean:
+# Group by button
+
+if st.session_state.edit or st.session_state.drop_null or st.session_state.replace_with_mean:
+    st.markdown("<div class = 'page-font' style = 'text-align: center'>You can<span class = 'color'> GroupBy </span> Data by any column.", unsafe_allow_html= True)
+    ('')
     groubby = st.button('# GroupBy')
     changebtn("GroupBy", "25px", "20%", "60%")
 
@@ -594,16 +603,16 @@ if st.session_state.groubby:
     st.text('Select columns for Group By')
     col1, col2, col3 = st.columns((1,1,1))
     with col1:
-        group_cols = st.multiselect('Select one or more group columns', data.columns.tolist())
+        group_cols = st.multiselect('Select one or more group columns', ndata.columns.tolist())
     with col2:
-        aggregate_cols = st.multiselect('Select one or more aggregate columns', data.select_dtypes(include=['int', 'float']).columns.tolist())
+        aggregate_cols = st.multiselect('Select one or more aggregate columns', ndata.select_dtypes(include=['int', 'float']).columns.tolist())
     with col3:
         aggregate_func = st.selectbox('Choose an aggregation function', ['mean', 'sum', 'count', 'max', 'min'])
 
 
     if len(group_cols) > 0 and len(aggregate_cols) > 0:
-        group_data = data.groupby(group_cols)[aggregate_cols].agg(aggregate_func)
-        st.dataframe(group_data, use_container_width=True)
+        group_data = ndata.groupby(group_cols)[aggregate_cols].agg(aggregate_func)
+        st.dataframe(group_data)
 
         c1, c2, c3 = st.columns((1,1,1))
 
