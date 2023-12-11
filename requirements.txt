@@ -1,11 +1,1 @@
-streamlit_extras
-streamlit
-seaborn
-streamlit-aggrid-pro
-plotly
-openpyxl
-scikit-learn
-streamlit_pandas_profiling
-pandas_profiling>=3.0.0
-pydantic
 
