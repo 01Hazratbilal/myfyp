@@ -251,7 +251,7 @@ if st.session_state.dataset_bnt:
     st.markdown("<div class = 'page-font' style = 'text-align: center;'>🎯 Here's where we Begin and End - the <span class = 'color'>Head & Tail</span> of our dataset! 🎲", unsafe_allow_html= True)
     st.write('')
     st.table(data.head())
-    st._legacy_table(data.tail())
+    st.table(data.tail())
     st.text('See! The Head & Tail. Notice the <NA> ("None" or "null") in Head and nan ("Not a Number") in tail, also true/false in Head and 0/1 in Tail. Both means the same.\nThe purpose to Differencite both is for better understanding with the Data')
     st.write('---')
 
