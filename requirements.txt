@@ -9,4 +9,4 @@ streamlit_pandas_profiling
 pandas_profiling
 pydantic
 pydantic-settings
-st_aggrid_pro
+st-aggrid-pro
