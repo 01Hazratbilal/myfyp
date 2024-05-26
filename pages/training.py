@@ -5,7 +5,7 @@ import io
 from io import StringIO, BytesIO
 import streamlit.components.v1 as components
 import sys
-from streamlit-aggrid-pro import AgGridPro
+from st_aggrid_pro import AgGridPro
 from streamlit_extras.switch_page_button import switch_page
 import plotly.express as px
 import base64
