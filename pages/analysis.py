@@ -299,7 +299,7 @@ if st.session_state.file:
     st.write('')
     st.table(data.head())
     st.markdown("<div class = 'page-font'><span class = 'color'>Tail</span>", unsafe_allow_html= True)
-    st._legacy_table(data.tail())
+    st.table(data.tail())
     st.write('---')
     
     # showing statistics button
