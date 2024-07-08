@@ -24,6 +24,8 @@ import sklearn.metrics as sm
 from ast import literal_eval
 from streamlit_pandas_profiling import st_profile_report
 import pandas_profiling
+from pydantic_settings import BaseSettings
+
 
 st.cache_data.clear()
 
