@@ -1,0 +1,12 @@
+streamlit_extras
+st-aggrid-pro
+streamlit
+seaborn
+streamlit-aggrid-pro
+plotly
+openpyxl
+scikit-learn
+streamlit_pandas_profiling
+pandas_profiling
+pydantic
+pydantic-settings
