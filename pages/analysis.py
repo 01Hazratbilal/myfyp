@@ -5,11 +5,6 @@ import io
 from io import StringIO, BytesIO
 import streamlit.components.v1 as components
 import sys
-try:
-    from st_aggrid_pro import AgGridPro
-except ImportError:
-    from st_aggrid import AgGrid as AgGridPro
-
 import streamlit as st
 from streamlit_extras.switch_page_button import switch_page
 import plotly.express as px
@@ -24,7 +19,16 @@ import sklearn.metrics as sm
 from ast import literal_eval
 from streamlit_pandas_profiling import st_profile_report
 import pandas_profiling
-from pydantic_settings import BaseSettings
+try:
+    from st_aggrid_pro import AgGridPro
+except ImportError:
+    from st_aggrid import AgGrid as AgGridPro
+
+try:
+    from pydantic import BaseSettings
+except ImportError:
+    from pydantic_settings import BaseSettings
+
 
 
 st.cache_data.clear()
