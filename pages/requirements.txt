@@ -1,5 +1,5 @@
 streamlit_extras
-
+streamlit-aggrid-pro
 streamlit
 seaborn
 streamlit-aggrid-pro
