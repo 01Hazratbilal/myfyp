@@ -322,7 +322,7 @@ if st.session_state.statis:
         st.markdown("<div class = 'page-font'><span class = 'color'>Statistics.</div>", unsafe_allow_html=True)
         st.write('')
         formatted_data = data.describe().applymap(lambda x: "{:.1f}".format(x))
-        st._legacy_table(formatted_data)
+        st.table(formatted_data)
         st.text('You can see the Statistics of the Dataset. Count is the number of rows. Mean, standard deviation, Minimun and Maximum of each column.\nYou can also Analyse the 4-Quartile. 1st Quartile from 0-25%. 2nd Quartile from 25-50%.\n3rd Quartile from 50-75%. 4th Quartile form 75-100%')
         
     with col2:
