@@ -290,7 +290,7 @@ if st.session_state.dataset:
             st.write('')
             st.markdown("<div class = 'page-font'>Dataset Successfully Uploaded.</div>", unsafe_allow_html=True)
             st.write(file)
-        data = pd.read_csv(file, encoding='latin-1', error_bad_lines=False, warn_bad_lines=True)
+        data = pd.read_excel(file)
 st.write('---')
 
 # Head and Tail
