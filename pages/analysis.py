@@ -24,10 +24,10 @@ except ImportError as e:
     st.error(f"Failed to import AgGrid: {str(e)}")
     st.stop()
 
-try:
-    from pydantic import BaseSettings
-except ImportError:
-    st.warning("pydantic could not be imported. Some features may not work as expected.")
+# try:
+#     from pydantic import BaseSettings
+# except ImportError:
+#     st.warning("pydantic could not be imported. Some features may not work as expected.")
 
 # Clear cache with error handling
 try:
