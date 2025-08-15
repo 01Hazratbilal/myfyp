@@ -19,14 +19,10 @@ from streamlit_pandas_profiling import st_profile_report
 
 # Exception handling for imports
 try:
-    from st_aggrid_pro import AgGridPro
-except (ImportError, ModuleNotFoundError) as e:
-    try:
-        from st_aggrid import AgGrid as AgGridPro
-        st.warning(f"Using fallback AgGrid: {str(e)}")
-    except ImportError as e:
-        st.error(f"Failed to import AgGrid: {str(e)}")
-        st.stop()
+    from st_aggrid import AgGrid as AgGridPro
+except ImportError as e:
+    st.error(f"Failed to import AgGrid: {str(e)}")
+    st.stop()
 
 try:
     from pydantic import BaseSettings
